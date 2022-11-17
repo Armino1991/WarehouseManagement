@@ -21,7 +21,7 @@ public class User {
 
     @NotEmpty
     @Column(name = "USERNAME", nullable = false)
-    private String userName;
+    private String username;
 
     @NotEmpty
     @Column(name = "PASSWORD")

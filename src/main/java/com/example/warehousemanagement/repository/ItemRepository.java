@@ -1,13 +1,15 @@
 package com.example.warehousemanagement.repository;
 
-import com.example.warehousemanagement.model.User;
+import com.example.warehousemanagement.model.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface ItemRepository extends JpaRepository<Item, Integer> {
 
-    User findByUsernameIgnoreCase(String userName);
+    Item findByName (String name);
+
+    List<Item> findAllByItemId(int id);
 }

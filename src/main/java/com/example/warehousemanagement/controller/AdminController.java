@@ -1,7 +1,9 @@
 package com.example.warehousemanagement.controller;
 
+import com.example.warehousemanagement.dto.UserDto;
 import com.example.warehousemanagement.model.User;
-import com.example.warehousemanagement.service.UserService;
+import com.example.warehousemanagement.service.MyUserDetailService;
+//import com.example.warehousemanagement.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
@@ -17,7 +19,7 @@ import java.util.Optional;
 public class AdminController {
 
     @Autowired
-    UserService userService;
+    MyUserDetailService userService;
 
     @GetMapping("/admin")
     public String adminHome(){
@@ -31,13 +33,20 @@ public class AdminController {
     }
     @GetMapping("/admin/users/add")
     public String getUserAdd(Model model){
-        model.addAttribute("user", new User());
-        return "userAdd";
+        model.addAttribute("userDto", new UserDto());
+        return "usersAdd";
     }
 
     @PostMapping("/admin/users/add")
-    public String postUserAdd(@ModelAttribute("user") User user){
+    public String postUserAdd(@ModelAttribute("userDto") UserDto userDto){
+        User user = new User();
+
+        user.setUserId(userDto.getUserId());
+        user.setUsername(userDto.getUsername());
+        user.setPassword(userDto.getPassword());
+        user.setRole(userDto.getRole());
         userService.addUser(user);
+
         return "redirect:/admin/users";
     }
 
@@ -49,11 +58,15 @@ public class AdminController {
 
     @GetMapping("/admin/users/update/{id}")
     public String updateUser(@PathVariable int id, Model model){
-        Optional<User> user = Optional.ofNullable(userService.getUserById(id));
-        if (user.isPresent()){
-            model.addAttribute("user", user.get());
-            return "userAdd";
-        }else
-            return "404";
+        User user = userService.getUserById(id);
+        UserDto userDto = new UserDto();
+        userDto.setUserId(user.getUserId());
+        userDto.setUsername(user.getUsername());
+        userDto.setPassword(user.getPassword());
+        userDto.setRole(user.getRole());
+
+        model.addAttribute("userDto", userDto);
+        userService.removeUserById(id);
+        return "usersAdd";
     }
 }
