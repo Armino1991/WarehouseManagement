@@ -30,9 +30,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/admin/users/add",
                         "/admin/users/delete/{id}",
                         "/admin/users/update/{id}").hasAnyAuthority("SYSTEM_ADMIN")
-                .antMatchers("/client").hasAnyAuthority("CLIENT")
+                .antMatchers("/client",
+                        "/client/orders",
+                        "/client/orders/add",
+                        "/client/order/{status}",
+                        "/client/vieworder/{orderNumber}").hasAnyAuthority("CLIENT")
                 .antMatchers("/manager",
-                        "/manager/items").hasAnyAuthority("WAREHOUSE_MANAGER")
+                        "/manager/items",
+                        "/manager/items/add",
+                        "/manager/items/delete/{id}",
+                        "/manager/items/update/{id}",
+                        "/manager/trucks",
+                        "/manager/trucks/add",
+                        "/manager/trucks/delete/{id}",
+                        "/manager/trucks/update/{id}").hasAnyAuthority("WAREHOUSE_MANAGER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

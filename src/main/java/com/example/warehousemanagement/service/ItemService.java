@@ -32,4 +32,5 @@ public class ItemService {
     public Item getItemById(Integer id){
         return itemRepository.findById(id).orElseThrow(() -> new RuntimeException("Item not found.."));
     }
+
 }

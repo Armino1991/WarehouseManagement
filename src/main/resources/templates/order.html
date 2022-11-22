@@ -7,14 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
     <title>Document</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" >
     <div class="container-fluid">
-
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,7 +21,7 @@
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/manager}" href="#">manager-home</a>
+                    <a class="nav-link" th:href="@{/client}" href="#">client-home</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/logout}" href="#">logout</a>
@@ -34,44 +32,42 @@
         </div>
     </div>
 </nav>
-<div class="jumbotron text-center">
-    <h1 class="display-4">Welcome back, Manager</h1>
-    <p>Easily manage your data from this admin CMS</p>
-</div>
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3 pt-3" >
-            <div class="card" style="background-color:white;">
-                <div class="card-body">
-                    <h4 class="card-title">Items</h4>
-                    <p class="card-text">Manage the items section here.</p>
-                    <a href="#" th:href="@{/manager/items}" class="card-link btn btn-primary">Manage</a>
+    <br>
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">Order Number</th>
+            <th scope="col">Submitted Date</th>
+            <th scope="col">Item Name</th>
+            <th scope="col">Status</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Deadline Date</th>
+            <th scope="col">Comment</th>
+            <th scope="col">Update</th>
+            <th scope="col">Submit</th>
+            <th scope="col">Cancel</th>
+        </tr>
+        </thead>
+        <tbody>
 
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3 pt-3" >
-            <div class="card" style="background-color:white;">
-                <div class="card-body">
-                    <h4 class="card-title">Trucks</h4>
-                    <p class="card-text">Manage the trucks section here.</p>
-                    <a href="#" th:href="@{/manager/trucks}" class="card-link btn btn-primary">Manage</a>
+        <tr>
+            <th th:text="${order.orderNumber}"></th>
+            <td th:text="${order.submittedDate}"></td>
+            <td th:text="${order.item.name}"></td>
+            <td th:text="${order.status}"></td>
+            <td th:text="${order.itemQuantity}"></td>
+            <td th:text="${order.deadlineDate}"></td>
+            <td th:text="${order.comment}"></td>
 
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3 pt-3" >
-            <div class="card" style="background-color:white;">
-                <div class="card-body">
-                    <h4 class="card-title">Orders</h4>
-                    <p class="card-text">Manage the orders section here.</p>
-                    <a href="#" th:href="@{/manager/orders}" class="card-link btn btn-primary">Manage</a>
 
-                </div>
-            </div>
-        </div>
+            <td><a href="" th:href="@{/client/order/update/{orderNumber}(orderNumber=${order.orderNumber})}" class="btn btn-warning">Update</a></td>
+            <td><a href="" th:href="@{/client/order/submit/{orderNumber}(orderNumber=${order.orderNumber})}" class="btn btn-success">Submit</a></td>
+            <td><a href="" th:href="@{/client/order/cancel/{orderNumber}(orderNumber=${order.orderNumber})}" class="btn btn-danger">Cancel</a></td>
 
-    </div>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 

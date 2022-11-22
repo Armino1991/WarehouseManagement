@@ -26,4 +26,5 @@ public class HomeController extends BaseController{
         }
         return success("index", model, principal);
     }
+
 }

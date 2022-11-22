@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -10,8 +11,14 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <title>Document</title>
+    <style>
+        h4{text-align: center;}
+        input{position: center;}
+    </style>
 </head>
 <body>
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light" >
     <div class="container-fluid">
 
@@ -22,59 +29,25 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/manager}" href="#">manager-home</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/logout}" href="#">logout</a>
-                </li>
-
             </ul>
 
         </div>
     </div>
 </nav>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <div class="jumbotron text-center">
-    <h1 class="display-4">Welcome back, Manager</h1>
-    <p>Easily manage your data from this admin CMS</p>
+    <h4 >You Cannot Update The Order !</h4>
+    <a th:href="@{/client/orders}">Go To Orders</a>
 </div>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3 pt-3" >
-            <div class="card" style="background-color:white;">
-                <div class="card-body">
-                    <h4 class="card-title">Items</h4>
-                    <p class="card-text">Manage the items section here.</p>
-                    <a href="#" th:href="@{/manager/items}" class="card-link btn btn-primary">Manage</a>
-
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3 pt-3" >
-            <div class="card" style="background-color:white;">
-                <div class="card-body">
-                    <h4 class="card-title">Trucks</h4>
-                    <p class="card-text">Manage the trucks section here.</p>
-                    <a href="#" th:href="@{/manager/trucks}" class="card-link btn btn-primary">Manage</a>
-
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3 pt-3" >
-            <div class="card" style="background-color:white;">
-                <div class="card-body">
-                    <h4 class="card-title">Orders</h4>
-                    <p class="card-text">Manage the orders section here.</p>
-                    <a href="#" th:href="@{/manager/orders}" class="card-link btn btn-primary">Manage</a>
-
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
